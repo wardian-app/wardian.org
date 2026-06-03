@@ -99,17 +99,6 @@ www           CNAME  wardian.org.          Proxied
 Cloudflare supports CNAME flattening for the apex domain, so the root CNAME is
 valid when DNS is hosted on Cloudflare.
 
-This repository also includes `.github/workflows/deploy-cloudflare-pages.yml`.
-For GitHub Actions deployment, create a Cloudflare Pages project named
-`wardian-org`, then add these repository secrets:
-
-```text
-CLOUDFLARE_API_TOKEN
-CLOUDFLARE_ACCOUNT_ID
-```
-
-The workflow deploys the repository root as a static site on pushes to `main`.
-
 ## Winget URL validation notes
 
 The homepage exists to provide a stable HTTPS `PublisherUrl` or `PackageUrl`
