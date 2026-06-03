@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wardian - Local AI Agent Team Command Center</title>
+    <meta
+      name="description"
+      content="Wardian is a local desktop command center for supervising AI agent teams across workspaces, tasks, and live status."
+    >
+    <link rel="canonical" href="https://wardian.org/">
+    <meta property="og:title" content="Wardian - Local AI Agent Team Command Center">
+    <meta
+      property="og:description"
+      content="A local desktop command center for supervising AI agent teams."
+    >
+    <meta property="og:url" content="https://wardian.org/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Wardian">
+    <meta property="og:image" content="https://wardian.org/assets/wardian-screenshot.png">
+    <meta property="og:image:alt" content="Wardian desktop app showing live AI agent terminals and roster status.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://wardian.org/assets/wardian-screenshot.png">
+    <meta name="theme-color" content="#12312b">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Wardian home">
+        <img class="brand-mark" src="assets/wardian-logo.svg" alt="" width="34" height="34">
+        <span>Wardian</span>
+      </a>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="#downloads">Downloads</a>
+        <a href="https://github.com/wardian-app/Wardian">GitHub</a>
+        <a href="https://docs.wardian.org/">Docs</a>
+        <a href="https://github.com/wardian-app/Wardian/issues">Support</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <img class="hero-logo" src="assets/wardian-logo.svg" alt="" width="86" height="86">
+          <p class="eyebrow">Local desktop app</p>
+          <h1 id="intro-title">Wardian</h1>
+          <p class="lede">
+            A local desktop command center for supervising AI agent teams across
+            workspaces, tasks, and live status.
+          </p>
+          <p class="summary">
+            Wardian gives real AI CLI agents durable identity, live terminals,
+            scoped skills, workflow runs, queue evidence, and workspace context
+            in one GUI-first habitat. Public documentation remains available at
+            docs.wardian.org.
+          </p>
+          <div class="actions" aria-label="Product links">
+            <a class="button primary" href="https://github.com/wardian-app/Wardian">
+              GitHub Repository
+            </a>
+            <a class="button secondary" href="https://github.com/wardian-app/Wardian/releases/latest">
+              Latest Release
+            </a>
+          </div>
+          <div class="support-links">
+            <a href="https://docs.wardian.org/">Documentation</a>
+            <span aria-hidden="true">/</span>
+            <a href="https://github.com/wardian-app/Wardian/issues">Issues and support</a>
+          </div>
+        </div>
+
+        <div class="product-visual">
+          <img
+            src="assets/wardian-demo.gif"
+            alt="Wardian desktop app demo showing live agent terminals, app navigation, and agent roster state."
+            width="1680"
+            height="960"
+          >
+        </div>
+      </section>
+
+      <section class="content-band" aria-labelledby="what-title">
+        <div class="section-inner">
+          <h2 id="what-title">What Wardian Provides</h2>
+          <div class="feature-grid">
+            <article>
+              <h3>Live agent operations</h3>
+              <p>
+                Spawn and supervise provider CLI agents from one desktop app,
+                with PTY-backed terminals, status, telemetry, and retained
+                output.
+              </p>
+            </article>
+            <article>
+              <h3>Coordination and control</h3>
+              <p>
+                Send prompts, broadcasts, lifecycle commands, and structured
+                peer handoffs through the app and the bundled wardian CLI.
+              </p>
+            </article>
+            <article>
+              <h3>Reusable context</h3>
+              <p>
+                Keep classes, skills, prompts, workflows, queue evidence, and
+                project context visible as reusable local artifacts.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band secondary-band" aria-labelledby="support-title">
+        <div class="section-inner">
+          <h2 id="support-title">Supported Provider CLIs</h2>
+          <p class="section-lede">
+            Wardian adapts real local provider CLIs into the same agent
+            lifecycle, telemetry, skill, and workflow model.
+          </p>
+          <div class="provider-grid" aria-label="Supported provider CLIs">
+            <article>
+              <span>Codex</span>
+              <p>Real-workspace execution with per-agent habitat state.</p>
+            </article>
+            <article>
+              <span>Claude Code</span>
+              <p>Session-aware runtime with permission hooks.</p>
+            </article>
+            <article>
+              <span>Gemini CLI</span>
+              <p>Real-workspace runtime with skill discovery support.</p>
+            </article>
+            <article>
+              <span>Antigravity</span>
+              <p>Native AGENTS.md discovery and transcript-based turn state.</p>
+            </article>
+            <article>
+              <span>OpenCode</span>
+              <p>Native AGENTS.md discovery with Wardian-scoped config.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band downloads-band" id="downloads" aria-labelledby="downloads-title">
+        <div class="section-inner">
+          <h2 id="downloads-title">Downloads</h2>
+          <p class="section-lede">
+            Pre-built binaries are published on GitHub Releases. Choose the
+            asset that matches your operating system and CPU.
+          </p>
+          <div class="download-grid">
+            <article>
+              <h3>Windows</h3>
+              <p>Standard x64 installer.</p>
+              <code>Wardian_X.Y.Z_x64-setup.exe</code>
+              <a href="/download/windows/">Download for Windows</a>
+            </article>
+            <article>
+              <h3>macOS Apple Silicon</h3>
+              <p>For M-series Macs.</p>
+              <code>Wardian_X.Y.Z_aarch64.dmg</code>
+              <a href="/download/macos-apple-silicon/">Download for Apple Silicon</a>
+            </article>
+            <article>
+              <h3>macOS Intel</h3>
+              <p>For older Intel Macs.</p>
+              <code>Wardian_X.Y.Z_x64.dmg</code>
+              <a href="/download/macos-intel/">Download for Intel Mac</a>
+            </article>
+            <article>
+              <h3>Linux Debian/Ubuntu</h3>
+              <p>Installable x64 Debian package.</p>
+              <code>Wardian_X.Y.Z_amd64.deb</code>
+              <a href="/download/linux-deb/">Download .deb</a>
+            </article>
+            <article>
+              <h3>Linux AppImage</h3>
+              <p>Portable x64 Linux app.</p>
+              <code>Wardian_X.Y.Z_amd64.AppImage</code>
+              <a href="/download/linux-appimage/">Download AppImage</a>
+            </article>
+          </div>
+          <p class="download-note">
+            Current binaries are unsigned. Windows SmartScreen and macOS
+            Gatekeeper may show first-launch warnings.
+          </p>
+        </div>
+      </section>
+
+      <section class="links-section" aria-labelledby="links-title">
+        <div class="section-inner">
+          <h2 id="links-title">Project Links</h2>
+          <ul class="resource-list">
+            <li>
+              <span>Source code</span>
+              <a href="https://github.com/wardian-app/Wardian">github.com/wardian-app/Wardian</a>
+            </li>
+            <li>
+              <span>Latest release</span>
+              <a href="https://github.com/wardian-app/Wardian/releases/latest">GitHub Releases</a>
+            </li>
+            <li>
+              <span>Documentation</span>
+              <a href="https://docs.wardian.org/">docs.wardian.org</a>
+            </li>
+            <li>
+              <span>Support and issues</span>
+              <a href="https://github.com/wardian-app/Wardian/issues">GitHub Issues</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Wardian</span>
+      <span>Local desktop command center for AI agent teams.</span>
+    </footer>
+  </body>
+</html>
