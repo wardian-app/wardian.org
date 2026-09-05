@@ -23,9 +23,15 @@
     <meta name="twitter:title" content="Wardian - Local Agent Work, Made Durable">
     <meta name="twitter:description" content="Where local agent work becomes visible, durable, and malleable.">
     <meta name="twitter:image" content="https://wardian.org/assets/wardian-screenshot.png">
-    <meta name="theme-color" content="#12312b">
+    <meta name="theme-color" content="#2f6f6a">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
+    <script>
+      // Marks the document as scripted so the clips can replace their
+      // <noscript> poster images. Without this the page renders the posters.
+      document.documentElement.classList.add("js");
+    </script>
+    <script type="module" src="assets/site.mjs"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXVJJPBQYF"></script>
     <script>
@@ -37,12 +43,15 @@
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#features">Skip to features</a>
+
     <header class="site-header">
       <a class="brand" href="/" aria-label="Wardian home">
         <img class="brand-mark" src="assets/wardian-logo.svg" alt="" width="34" height="34">
         <span>Wardian</span>
       </a>
       <nav class="top-nav" aria-label="Primary navigation">
+        <a href="#features">Features</a>
         <a href="#downloads">Downloads</a>
         <a href="https://github.com/wardian-app/Wardian">GitHub</a>
         <a href="https://docs.wardian.org/">Docs</a>
@@ -62,69 +71,532 @@
             Run the CLI agents you already use in real workspaces. Keep their
             sessions and evidence visible, then turn successful work into
             reusable prompts, skills, classes, workflows, and project context.
-            Wardian is evolving toward a restorable workbench where the views
-            you need can stay together without confusing layout with agent
-            runtime.
           </p>
           <div class="actions" aria-label="Product links">
-            <a class="button primary" href="https://github.com/wardian-app/Wardian">
+            <a class="button primary" href="#downloads">Download Wardian</a>
+            <a class="button secondary" href="https://github.com/wardian-app/Wardian">
               GitHub Repository
-            </a>
-            <a class="button secondary" href="https://github.com/wardian-app/Wardian/releases/latest">
-              Latest Release
             </a>
           </div>
           <div class="support-links">
             <a href="https://docs.wardian.org/">Documentation</a>
             <span aria-hidden="true">/</span>
+            <a href="https://github.com/wardian-app/Wardian/releases/latest">Latest release</a>
+            <span aria-hidden="true">/</span>
             <a href="https://github.com/wardian-app/Wardian/issues">Issues and support</a>
           </div>
         </div>
 
-        <div class="product-visual">
-          <img
-            src="assets/wardian-demo.gif"
-            alt="Wardian desktop app demo showing live agent terminals, app navigation, and agent roster state."
-            width="1680"
-            height="960"
+        <figure class="product-visual feature-media" data-clip="hero">
+          <video
+            class="clip"
+            poster="assets/media/hero.png"
+            width="1600"
+            height="1000"
+            muted
+            loop
+            playsinline
+            preload="none"
+            aria-label="Silent looping recording of the Wardian agent Grid with several live terminals and their status colours."
           >
-        </div>
+            <source data-src="assets/media/hero.webm" type="video/webm">
+            <source data-src="assets/media/hero.mp4" type="video/mp4">
+          </video>
+          <noscript>
+            <img
+              src="assets/media/hero.png"
+              alt="The Wardian agent Grid with several live agent terminals and their status colours."
+              width="1600"
+              height="1000"
+            >
+          </noscript>
+          <figcaption>
+            The Grid: every agent running in its own PTY-backed terminal, with
+            status colour on each card.
+          </figcaption>
+        </figure>
       </section>
 
-      <section class="content-band" aria-labelledby="what-title">
-        <div class="section-inner">
-          <h2 id="what-title">Make agent work durable</h2>
-          <div class="feature-grid">
-            <article>
-              <h3>See live work</h3>
+      <div id="features" class="features" role="region" aria-label="What Wardian does">
+        <section class="feature" id="feature-graph" data-clip="graph" aria-labelledby="feature-graph-title">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <p class="feature-eyebrow"><span class="feature-index">01</span> Graph</p>
+              <h2 id="feature-graph-title">Agents that know about each other</h2>
               <p>
-                Run and watch provider CLI agents from one desktop app, with
-                PTY-backed terminals, status, telemetry, Queue evidence, and
-                retained output.
+                The Graph draws the agents and the links between them. Edges
+                come from a team you create, a link you make by hand, or a
+                shared workspace, and you can ignore the ones you do not want.
               </p>
-            </article>
-            <article>
-              <h3>Keep what works</h3>
               <p>
-                Promote a useful instruction into a prompt, a repeated method
-                into a skill, or a durable role into a class—without losing
-                the source context that made it useful.
+                The topology is written to <code>topology.json</code>, so an
+                agent can read its own neighbours before it sends anything.
               </p>
-            </article>
-            <article>
-              <h3>Coordinate in the open</h3>
-              <p>
-                Send prompts, hand work off, run workflows, and inspect the
-                relationships and evidence around the agents doing the work.
-              </p>
-            </article>
+              <a class="feature-link" href="https://docs.wardian.org/guide/graph">Graph guide</a>
+            </div>
+            <figure class="feature-media">
+              <video
+                class="clip"
+                poster="assets/media/graph.png"
+                width="1600"
+                height="1000"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Silent looping recording of the Wardian Graph view showing agent topology, edges, and neighbours."
+              >
+                <source data-src="assets/media/graph.webm" type="video/webm">
+                <source data-src="assets/media/graph.mp4" type="video/mp4">
+              </video>
+              <noscript>
+                <img
+                  src="assets/media/graph.png"
+                  alt="The Wardian Graph view showing agent topology, edges, and neighbours."
+                  width="1600"
+                  height="1000"
+                >
+              </noscript>
+              <figcaption>Graph view: topology, edges, neighbours, and team-seeded links.</figcaption>
+            </figure>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="feature" id="feature-ask-reply" data-clip="ask-reply" aria-labelledby="feature-ask-reply-title">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <p class="feature-eyebrow"><span class="feature-index">02</span> Ask and reply</p>
+              <h2 id="feature-ask-reply-title">Handoffs that leave a record</h2>
+              <p>
+                An ask carries a durable id. The reply comes back against that
+                id with a status and any choices the ask offered, and both ends
+                land in the Inbox.
+              </p>
+              <p>
+                A message can queue while the receiving agent is busy or
+                offline, and it keeps its delivery receipt either way.
+              </p>
+              <a class="feature-link" href="https://docs.wardian.org/guide/inbox">Inbox guide</a>
+            </div>
+            <figure class="feature-media">
+              <video
+                class="clip"
+                poster="assets/media/ask-reply.png"
+                width="1600"
+                height="1000"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Silent looping recording of a structured ask reaching another Wardian agent and its reply appearing in the Inbox."
+              >
+                <source data-src="assets/media/ask-reply.webm" type="video/webm">
+                <source data-src="assets/media/ask-reply.mp4" type="video/mp4">
+              </video>
+              <noscript>
+                <img
+                  src="assets/media/ask-reply.png"
+                  alt="A structured ask reaching another Wardian agent and its reply appearing in the Inbox."
+                  width="1600"
+                  height="1000"
+                >
+              </noscript>
+              <figcaption>A structured ask reaching another agent, and its reply in the Inbox.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="feature widget-section" id="claim-delivery" aria-labelledby="claim-delivery-title">
+          <div class="widget widget-lead" aria-labelledby="claim-delivery-title">
+            <p class="feature-eyebrow"><span class="feature-index">03</span> Delivery evidence</p>
+            <h2 id="claim-delivery-title">Delivered is not the same as done</h2>
+            <p class="widget-lede">
+              Wardian records a submission at four points and keeps the evidence
+              for each. When the outcome of a submission is uncertain, later
+              evidence resolves it. Nothing is replayed on a guess.
+            </p>
+            <div class="node-map-figure">
+              <svg
+                class="node-diagram"
+                viewBox="0 0 940 270"
+                role="img"
+                aria-labelledby="delivery-diagram-title delivery-diagram-desc"
+                data-node-diagram
+              >
+                <title id="delivery-diagram-title">The states of a submission</title>
+                <desc id="delivery-diagram-desc">
+                  A submission moves from queued to accepted to provider started
+                  to provider completed. An accepted submission whose outcome is
+                  uncertain goes to reconciliation, which resolves it from later
+                  evidence rather than replaying it.
+                </desc>
+                <g class="edges" aria-hidden="true">
+                  <path d="M180 62 H236" />
+                  <path d="M400 62 H456" />
+                  <path d="M620 62 H676" />
+                  <path d="M312 92 V182 H460" />
+                  <path d="M700 182 H760 V92" />
+                </g>
+                <g
+                  class="node node-queued"
+                  tabindex="0"
+                  data-node-copy="Queued: the message is durable and waiting because the agent is busy or offline. It has not been handed to a provider."
+                >
+                  <title>Queued</title>
+                  <rect x="16" y="34" width="164" height="58" rx="10" />
+                  <text x="98" y="60">queued</text>
+                  <text class="node-sub" x="98" y="80">held, not sent</text>
+                </g>
+                <g
+                  class="node node-accepted"
+                  tabindex="0"
+                  data-node-copy="Accepted: the delivery broker took the submission and wrote a receipt. Acceptance is not a claim that the work is done."
+                >
+                  <title>Accepted</title>
+                  <rect x="236" y="34" width="164" height="58" rx="10" />
+                  <text x="318" y="60">accepted</text>
+                  <text class="node-sub" x="318" y="80">receipt written</text>
+                </g>
+                <g
+                  class="node node-started"
+                  tabindex="0"
+                  data-node-copy="Provider started: the provider CLI has begun the turn. The agent shows as processing from here."
+                >
+                  <title>Provider started</title>
+                  <rect x="456" y="34" width="164" height="58" rx="10" />
+                  <text x="538" y="60">provider</text>
+                  <text class="node-sub" x="538" y="80">started</text>
+                </g>
+                <g
+                  class="node node-completed"
+                  tabindex="0"
+                  data-node-copy="Provider completed: the turn finished and the completion evidence is stored against the same id."
+                >
+                  <title>Provider completed</title>
+                  <rect x="676" y="34" width="180" height="58" rx="10" />
+                  <text x="766" y="60">provider</text>
+                  <text class="node-sub" x="766" y="80">completed</text>
+                </g>
+                <g
+                  class="node node-uncertain"
+                  tabindex="0"
+                  data-node-copy="Reconciliation: the submission's outcome was uncertain, so Wardian waits for later evidence and resolves the record instead of sending the message again."
+                >
+                  <title>Reconciliation</title>
+                  <rect x="460" y="154" width="240" height="58" rx="10" />
+                  <text x="580" y="180">reconciled</text>
+                  <text class="node-sub" x="580" y="200">no silent replay</text>
+                </g>
+              </svg>
+              <p class="node-caption" data-node-caption role="status">
+                Hover or focus a state to see what it means.
+              </p>
+            </div>
+            <a class="feature-link" href="https://docs.wardian.org/guide/cli">CLI guide</a>
+          </div>
+        </section>
+
+        <section class="feature" id="feature-workflows" data-clip="workflows" aria-labelledby="feature-workflows-title">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <p class="feature-eyebrow"><span class="feature-index">04</span> Workflows</p>
+              <h2 id="feature-workflows-title">Workflows that branch, loop, and wait</h2>
+              <p>
+                Build a run as a node graph: agent calls, commands, scripts,
+                files, memory, branches, loops, and waits. The workflow owns the
+                control flow, so a branch is decided by the run itself.
+              </p>
+              <p>
+                Input parameters and shared storage pass values between nodes,
+                and the builder validates the graph before it executes.
+              </p>
+              <a class="feature-link" href="https://docs.wardian.org/guide/automations">Automations guide</a>
+            </div>
+            <figure class="feature-media">
+              <video
+                class="clip"
+                poster="assets/media/workflows.png"
+                width="1600"
+                height="1000"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Silent looping recording of the Wardian visual workflow builder with control-flow nodes, parameters, and validation."
+              >
+                <source data-src="assets/media/workflows.webm" type="video/webm">
+                <source data-src="assets/media/workflows.mp4" type="video/mp4">
+              </video>
+              <noscript>
+                <img
+                  src="assets/media/workflows.png"
+                  alt="The Wardian visual workflow builder with control-flow nodes, parameters, and validation."
+                  width="1600"
+                  height="1000"
+                >
+              </noscript>
+              <figcaption>The visual builder: control-flow nodes, parameters, and validation.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="feature" id="feature-thought-telemetry" data-clip="thought-telemetry" aria-labelledby="feature-thought-telemetry-title">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <p class="feature-eyebrow"><span class="feature-index">05</span> Thought telemetry</p>
+              <h2 id="feature-thought-telemetry-title">See what each agent is thinking</h2>
+              <p>
+                Each agent in the roster carries its provider's current thought
+                and a telemetry snippet, updated while the turn runs.
+              </p>
+              <p>
+                You can tell which agent is stuck, and which is only slow,
+                without opening a terminal.
+              </p>
+              <a class="feature-link" href="https://docs.wardian.org/guide/watchlists">Watchlists guide</a>
+            </div>
+            <figure class="feature-media">
+              <video
+                class="clip"
+                poster="assets/media/thought-telemetry.png"
+                width="1600"
+                height="1000"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Silent looping recording of Wardian roster thought bubbles and live activity beside each agent."
+              >
+                <source data-src="assets/media/thought-telemetry.webm" type="video/webm">
+                <source data-src="assets/media/thought-telemetry.mp4" type="video/mp4">
+              </video>
+              <noscript>
+                <img
+                  src="assets/media/thought-telemetry.png"
+                  alt="Wardian roster thought bubbles and live activity beside each agent."
+                  width="1600"
+                  height="1000"
+                >
+              </noscript>
+              <figcaption>Roster thought bubbles and live activity beside each agent.</figcaption>
+            </figure>
+          </div>
+
+          <div class="widget status-legend" aria-labelledby="status-legend-title">
+            <h3 id="status-legend-title">One status vocabulary</h3>
+            <p class="widget-lede">
+              The same five colours mean the same five things on every surface.
+            </p>
+            <ul class="legend-list">
+              <li class="legend-item" data-status="idle" tabindex="0">
+                <span class="legend-dot" aria-hidden="true"></span>
+                <span class="legend-name">Idle</span>
+                <span class="legend-note">Alive and waiting for work.</span>
+              </li>
+              <li class="legend-item" data-status="processing" tabindex="0">
+                <span class="legend-dot" aria-hidden="true"></span>
+                <span class="legend-name">Processing</span>
+                <span class="legend-note">A turn is running right now.</span>
+              </li>
+              <li class="legend-item" data-status="action" tabindex="0">
+                <span class="legend-dot" aria-hidden="true"></span>
+                <span class="legend-name">Action required</span>
+                <span class="legend-note">Waiting on a decision from you.</span>
+              </li>
+              <li class="legend-item" data-status="off" tabindex="0">
+                <span class="legend-dot" aria-hidden="true"></span>
+                <span class="legend-name">Off</span>
+                <span class="legend-note">No provider process attached.</span>
+              </li>
+              <li class="legend-item" data-status="error" tabindex="0">
+                <span class="legend-dot" aria-hidden="true"></span>
+                <span class="legend-name">Error</span>
+                <span class="legend-note">The session failed and needs a restart.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="feature" id="feature-dashboard" data-clip="dashboard" aria-labelledby="feature-dashboard-title">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <p class="feature-eyebrow"><span class="feature-index">06</span> Dashboard</p>
+              <h2 id="feature-dashboard-title">The fleet, not the tab</h2>
+              <p>
+                One row per agent: state, active time, turns, tokens, files
+                touched, and lines changed, with a provider strip across the
+                top.
+              </p>
+              <p>
+                Pick the window and the trend is computed over it.
+              </p>
+              <a class="feature-link" href="https://docs.wardian.org/guide/dashboard">Dashboard guide</a>
+            </div>
+            <figure class="feature-media">
+              <video
+                class="clip"
+                poster="assets/media/dashboard.png"
+                width="1600"
+                height="1000"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Silent looping recording of the Wardian Dashboard fleet table and Analytics trend metrics."
+              >
+                <source data-src="assets/media/dashboard.webm" type="video/webm">
+                <source data-src="assets/media/dashboard.mp4" type="video/mp4">
+              </video>
+              <noscript>
+                <img
+                  src="assets/media/dashboard.png"
+                  alt="The Wardian Dashboard fleet table and Analytics trend metrics."
+                  width="1600"
+                  height="1000"
+                >
+              </noscript>
+              <figcaption>The Dashboard fleet table and the Analytics trend metrics.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="feature" id="feature-markdown-truth" data-clip="markdown-truth" aria-labelledby="feature-markdown-truth-title">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <p class="feature-eyebrow"><span class="feature-index">07</span> Files on disk</p>
+              <h2 id="feature-markdown-truth-title">Everything is a file you can read</h2>
+              <p>
+                Prompts, classes, skills, workflows, results, and topology are
+                files. The Library and the Explorer show the same directory you
+                can open in any editor.
+              </p>
+              <p>
+                The app is a view onto that directory, so the state stays
+                readable when the app is closed.
+              </p>
+              <a class="feature-link" href="https://docs.wardian.org/guide/explorer">Explorer guide</a>
+            </div>
+            <figure class="feature-media">
+              <video
+                class="clip"
+                poster="assets/media/markdown-truth.png"
+                width="1600"
+                height="1000"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Silent looping recording of the Wardian Library and Explorer showing the same files on disk."
+              >
+                <source data-src="assets/media/markdown-truth.webm" type="video/webm">
+                <source data-src="assets/media/markdown-truth.mp4" type="video/mp4">
+              </video>
+              <noscript>
+                <img
+                  src="assets/media/markdown-truth.png"
+                  alt="The Wardian Library and Explorer showing the same files on disk."
+                  width="1600"
+                  height="1000"
+                >
+              </noscript>
+              <figcaption>The Library and the Explorer showing the same on-disk files.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="feature widget-section" id="claim-memory" aria-labelledby="claim-memory-title">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <p class="feature-eyebrow"><span class="feature-index">08</span> Memory</p>
+              <h2 id="claim-memory-title">Memory that carries its evidence</h2>
+              <p>
+                Every saved memory stores the excerpt it came from. Records are
+                scoped to an agent or a workspace, and an update keeps the
+                previous revision rather than overwriting it.
+              </p>
+              <p>
+                Agent memory is opt-in under Settings, and inside a managed
+                terminal an agent can only reach its own records.
+              </p>
+              <a class="feature-link" href="https://docs.wardian.org/guide/agent-memory">Agent memory guide</a>
+            </div>
+
+            <div class="terminal" data-terminal>
+              <div class="terminal-bar">
+                <span class="terminal-dots" aria-hidden="true"></span>
+                <span class="terminal-title">wardian memory</span>
+                <button class="terminal-toggle" type="button" data-terminal-toggle hidden>
+                  Pause
+                </button>
+              </div>
+              <pre class="terminal-body" data-terminal-body tabindex="0"><span class="tl cmd">$ wardian memory save "Release tags are cut from main after CI is green" \</span>
+<span class="tl cmd">    --evidence "we tag from main, never from a feature branch" --scope agent</span>
+<span class="tl ok">saved  id=7c1f9ab2  scope=agent  revision=1</span>
+<span class="tl cmd">$ wardian memory recall</span>
+<span class="tl dim">ID        SCOPE      MEMORY</span>
+<span class="tl">7c1f9ab2  agent      Release tags are cut from main after CI is green</span>
+<span class="tl">a0d34e11  workspace  Run the verify script before every push</span>
+<span class="tl cmd">$ wardian memory show 7c1f9ab2</span>
+<span class="tl">memory    Release tags are cut from main after CI is green</span>
+<span class="tl warn">evidence  "we tag from main, never from a feature branch"</span>
+<span class="tl">scope     agent      revision  1</span>
+<span class="tl cmd">$ wardian memory update 7c1f9ab2 "Tags are cut from main after CI is green and the changelog is written" \</span>
+<span class="tl cmd">    --evidence "add the changelog step before tagging"</span>
+<span class="tl ok">updated  id=7c1f9ab2  revision=2</span>
+<span class="tl cmd">$ wardian memory history 7c1f9ab2</span>
+<span class="tl">revision 2  current     add the changelog step before tagging</span>
+<span class="tl dim">revision 1  superseded  we tag from main, never from a feature branch</span></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature" id="feature-classes" data-clip="classes" aria-labelledby="feature-classes-title">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <p class="feature-eyebrow"><span class="feature-index">09</span> Classes</p>
+              <h2 id="feature-classes-title">Roles you define once</h2>
+              <p>
+                A Class is a role: instructions, skills, and prompts that every
+                agent of that role receives when it starts.
+              </p>
+              <p>
+                The definition is a Library entry on disk, so editing the class
+                changes the next agent that uses it.
+              </p>
+              <a class="feature-link" href="https://docs.wardian.org/guide/class-management">Class management guide</a>
+            </div>
+            <figure class="feature-media">
+              <video
+                class="clip"
+                poster="assets/media/classes.png"
+                width="1600"
+                height="1000"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Silent looping recording of Wardian class management, with a reusable agent setup being applied."
+              >
+                <source data-src="assets/media/classes.webm" type="video/webm">
+                <source data-src="assets/media/classes.mp4" type="video/mp4">
+              </video>
+              <noscript>
+                <img
+                  src="assets/media/classes.png"
+                  alt="Wardian class management, with a reusable agent setup being applied."
+                  width="1600"
+                  height="1000"
+                >
+              </noscript>
+              <figcaption>Class management: a reusable agent setup being applied.</figcaption>
+            </figure>
+          </div>
+        </section>
+      </div>
 
       <section class="content-band secondary-band" aria-labelledby="support-title">
         <div class="section-inner">
-          <h2 id="support-title">Supported Provider CLIs</h2>
+          <h2 id="support-title">Supported provider CLIs</h2>
           <p class="section-lede">
             Wardian adapts real local provider CLIs into a shared operational
             view while preserving the provider-specific behavior that matters.
@@ -202,7 +674,7 @@
 
       <section class="links-section" aria-labelledby="links-title">
         <div class="section-inner">
-          <h2 id="links-title">Project Links</h2>
+          <h2 id="links-title">Project links</h2>
           <ul class="resource-list">
             <li>
               <span>Source code</span>
