@@ -804,9 +804,12 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-.download-grid a {
+/* The card itself is now the anchor, so this can no longer target `a`: it
+   would set the weight and alignment of every line inside the card. The call
+   to action carries them instead. */
+.download-grid .download-cta {
   align-self: end;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .download-note {
@@ -1245,4 +1248,211 @@ h1 {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.88rem;
+}
+
+/* --------------------------------------------------------------------------
+   Remote: phone-shaped stills
+
+   These are real captures of the mobile surface rather than a clip. The remote
+   shell talks to the desktop over a socket instead of the app's IPC, so the
+   fixtures the other clips are recorded against cannot drive it.
+   -------------------------------------------------------------------------- */
+.phones {
+  display: flex;
+  gap: clamp(16px, 3vw, 28px);
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.phone {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  max-width: 260px;
+}
+
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.phone figcaption {
+  color: var(--muted);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+/* The second phone is context, not the subject: smaller and set back. */
+.phone-secondary {
+  max-width: 208px;
+  margin-top: clamp(18px, 4vw, 44px);
+}
+
+@media (max-width: 560px) {
+  .phones {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .phone-secondary {
+    margin-top: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FAQ
+   -------------------------------------------------------------------------- */
+.faq-list {
+  display: grid;
+  gap: 10px;
+  max-width: 820px;
+  margin: clamp(24px, 4vw, 36px) auto 0;
+  text-align: left;
+}
+
+.faq-list details {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.faq-list summary {
+  padding: 15px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A caret the browser does not draw for us, rotated when the entry is open. */
+.faq-list summary::after {
+  content: "";
+  float: right;
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 120ms ease;
+}
+
+.faq-list details[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.faq-list summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 10px;
+}
+
+.faq-list details p {
+  margin: 0;
+  padding: 0 18px 16px;
+  max-width: 72ch;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-list summary::after {
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Downloads: the whole card is the target
+
+   A card with a small text link inside it gives a large obvious box that does
+   nothing and a short line of text that does the work. The card is now the
+   anchor, so the hit area matches what the card looks like it is.
+   -------------------------------------------------------------------------- */
+.download-card {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-height: 152px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  text-decoration: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.download-card:hover,
+.download-card:focus-visible {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.download-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.download-head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.download-name {
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.download-desc {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.download-cta {
+  align-self: end;
+  margin-top: 4px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.94rem;
+}
+
+.download-arrow {
+  display: inline-block;
+  transition: transform 120ms ease;
+}
+
+.download-card:hover .download-arrow,
+.download-card:focus-visible .download-arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .download-card,
+  .download-arrow {
+    transition: none;
+  }
+
+  .download-card:hover,
+  .download-card:focus-visible {
+    transform: none;
+  }
+}
+
+
+/* Headings wrap to two lines on the longer platform names, so the cards
+   stretch to a common height rather than stair-stepping. */
+.download-grid {
+  align-items: stretch;
 }

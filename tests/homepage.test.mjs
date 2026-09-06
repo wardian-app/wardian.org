@@ -114,11 +114,18 @@ describe("clip markup", () => {
   });
 
   it("describes every clip in text, so the section survives blocked media", () => {
-    const captions = [...html.matchAll(/<figcaption>([\s\S]*?)<\/figcaption>/g)];
+    // Scoped to the clip figures. The page also carries phone stills in their
+    // own figures, and counting every figcaption on the page would make this
+    // fail whenever an unrelated image gains a caption.
+    const clipFigures = [...html.matchAll(
+      /<figure class="[^"]*feature-media[^"]*"[\s\S]*?<\/figure>/g,
+    )].map(([block]) => block);
 
-    assert.equal(captions.length, videos.length);
-    for (const [, text] of captions) {
-      assert.ok(text.trim().length > 20, "figcaption is too short to describe the clip");
+    assert.equal(clipFigures.length, videos.length, "every clip is in a feature-media figure");
+    for (const block of clipFigures) {
+      const caption = block.match(/<figcaption>([\s\S]*?)<\/figcaption>/);
+      assert.ok(caption, "a clip figure has no caption");
+      assert.ok(caption[1].trim().length > 20, "figcaption is too short to describe the clip");
     }
   });
 });
@@ -137,22 +144,42 @@ describe("widgets", () => {
     assert.ok(html.split("$ wardian").length - 1 >= 4);
   });
 
-  it("shows a stored memory with its evidence and superseded revision", () => {
-    assert.match(html, /class="record"/);
-    assert.match(html, /class="record-evidence"/);
-    // Provenance is the claim: the excerpt it came from, and the fact that an
-    // update keeps the older revision instead of overwriting it.
-    assert.match(html, /Evidence/);
+  it("shows memory provenance as a real transcript", () => {
+    // Both terminals ship their text as markup, so they read correctly with
+    // scripting off; the animation only reveals what is already there.
+    assert.equal([...html.matchAll(/data-terminal>/g)].length, 2, "expected two terminals");
+    assert.match(html, /wardian memory save/);
+    assert.match(html, /wardian memory history/);
+    // Provenance is the claim: the excerpt a memory came from, and an update
+    // that supersedes rather than overwrites.
+    assert.match(html, /--evidence/);
     assert.match(html, /superseded/);
-    assert.match(html, /rev 1/);
-    assert.match(html, /rev 2/);
+    assert.match(html, /revision=2/);
   });
 
-  it("gives every download a platform mark", () => {
-    const icons = [...html.matchAll(/class="dl-icon"/g)];
-    const headings = [...html.matchAll(/<h3><svg class="dl-icon"/g)];
-    assert.equal(icons.length, 5, "expected one mark per download");
-    assert.equal(headings.length, 5, "every download heading leads with its mark");
+  it("makes every download card one clickable target", () => {
+    const cards = [...html.matchAll(/<a class="download-card" href="([^"]+)"/g)];
+    assert.equal(cards.length, 5, "expected five download cards");
+    // A card with a small link inside it gives a large box that does nothing.
+    // The anchor is the card, so there is no separate link to miss.
+    for (const [, href] of cards) {
+      assert.match(href, /^\/download\/[a-z-]+\/$/, `unexpected download href ${href}`);
+    }
+    assert.equal([...html.matchAll(/class="dl-icon"/g)].length, 5, "one mark per download");
+  });
+
+  it("answers the questions a download page cannot", () => {
+    const entries = [...html.matchAll(/<details name="faq">/g)];
+    assert.ok(entries.length >= 6, `only ${entries.length} FAQ entries`);
+    // <details> works with scripting off, which is the point of using it.
+    assert.match(html, /<summary>Does my code leave my machine\?<\/summary>/);
+  });
+
+  it("shows the remote surface with real captures", () => {
+    assert.match(html, /id="feature-remote"/);
+    assert.match(html, /assets\/media\/remote-terminal\.png/);
+    assert.match(html, /assets\/media\/remote-inbox\.png/);
+    assert.match(html, /docs\.wardian\.org\/guide\/remote-control/);
   });
 
   it("does not claim macOS builds are unsigned", () => {

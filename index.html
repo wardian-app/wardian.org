@@ -43,6 +43,7 @@
       </a>
       <nav class="top-nav" aria-label="Primary navigation">
         <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
         <a href="#downloads">Downloads</a>
         <a href="https://github.com/wardian-app/Wardian">GitHub</a>
         <a href="https://docs.wardian.org/">Docs</a>
@@ -386,30 +387,31 @@
               <a class="feature-link" href="https://docs.wardian.org/guide/agent-memory">Agent memory guide</a>
             </div>
 
-            <div class="record" aria-label="A stored memory and its evidence">
-              <div class="record-head">
-                <span class="record-id">7c1f9ab2</span>
-                <span class="record-scope">agent</span>
-                <span class="record-rev">revision 2</span>
+            <div class="terminal" data-terminal>
+              <div class="terminal-bar">
+                <span class="terminal-dots" aria-hidden="true"></span>
+                <span class="terminal-title">wardian memory</span>
+                <button class="terminal-toggle" type="button" data-terminal-toggle hidden>
+                  Pause
+                </button>
               </div>
-              <p class="record-text">
-                Tags are cut from main after CI is green and the changelog is
-                written.
-              </p>
-              <div class="record-evidence">
-                <span class="record-label">Evidence</span>
-                <blockquote>add the changelog step before tagging</blockquote>
-              </div>
-              <ol class="record-history">
-                <li class="is-current">
-                  <span class="record-rev-tag">rev 2</span>
-                  <span class="record-note">current</span>
-                </li>
-                <li>
-                  <span class="record-rev-tag">rev 1</span>
-                  <span class="record-note">superseded, kept &mdash; &ldquo;we tag from main, never from a feature branch&rdquo;</span>
-                </li>
-              </ol>
+              <pre class="terminal-body" data-terminal-body tabindex="0"><span class="tl cmd">$ wardian memory save "Release tags are cut from main after CI is green" \</span>
+<span class="tl cmd">    --evidence "we tag from main, never from a feature branch" --scope agent</span>
+<span class="tl ok">saved  id=7c1f9ab2  scope=agent  revision=1</span>
+<span class="tl cmd">$ wardian memory recall</span>
+<span class="tl dim">ID        SCOPE      MEMORY</span>
+<span class="tl">7c1f9ab2  agent      Release tags are cut from main after CI is green</span>
+<span class="tl">a0d34e11  workspace  Run the verify script before every push</span>
+<span class="tl cmd">$ wardian memory show 7c1f9ab2</span>
+<span class="tl">memory    Release tags are cut from main after CI is green</span>
+<span class="tl warn">evidence  "we tag from main, never from a feature branch"</span>
+<span class="tl">scope     agent      revision  1</span>
+<span class="tl cmd">$ wardian memory update 7c1f9ab2 "Tags are cut from main after CI is green and the changelog is written" \</span>
+<span class="tl cmd">    --evidence "add the changelog step before tagging"</span>
+<span class="tl ok">updated  id=7c1f9ab2  revision=2</span>
+<span class="tl cmd">$ wardian memory history 7c1f9ab2</span>
+<span class="tl">revision 2  current     add the changelog step before tagging</span>
+<span class="tl dim">revision 1  superseded  we tag from main, never from a feature branch</span></pre>
             </div>
           </div>
         </section>
@@ -456,7 +458,53 @@
             </figure>
           </div>
         </section>
-      </div>
+        <section class="feature widget-section" id="feature-remote" aria-labelledby="feature-remote-title">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <p class="feature-eyebrow"><span class="feature-index">09</span> Remote</p>
+              <h2 id="feature-remote-title">Check in from your phone</h2>
+              <p>
+                Wardian serves a mobile surface over your own private network.
+                Read an agent's terminal, answer a prompt it is blocked on, and
+                clear the Inbox from wherever you are.
+              </p>
+              <p>
+                The desktop stays the host: it keeps the agents, the PTYs, the
+                filesystem access and the telemetry. The phone is a view onto
+                it, reached over your own Tailscale tailnet with no Wardian
+                server in between.
+              </p>
+              <a class="feature-link" href="https://docs.wardian.org/guide/remote-control">Remote control guide</a>
+            </div>
+
+            <div class="phones">
+              <figure class="phone">
+                <img
+                  src="assets/media/remote-terminal.png"
+                  alt="Wardian on a phone showing a running agent's terminal with pause, clear and kill controls and a prompt composer."
+                  width="780"
+                  height="1688"
+                  loading="lazy"
+                  decoding="async"
+                >
+                <figcaption>An agent's live terminal, with its composer.</figcaption>
+              </figure>
+              <figure class="phone phone-secondary">
+                <img
+                  src="assets/media/remote-inbox.png"
+                  alt="Wardian on a phone showing the Inbox with a completed agent result summary."
+                  width="390"
+                  height="844"
+                  loading="lazy"
+                  decoding="async"
+                >
+                <figcaption>Completions in the Inbox.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+     </div>
 
       <section class="content-band secondary-band" aria-labelledby="support-title">
         <div class="section-inner">
@@ -490,6 +538,79 @@
               <span>OpenCode</span>
               <p>Native AGENTS.md discovery with Wardian-scoped config.</p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band faq-band" id="faq" aria-labelledby="faq-title">
+        <div class="section-inner">
+          <h2 id="faq-title">Questions</h2>
+
+          <div class="faq-list">
+            <details name="faq">
+              <summary>Does my code leave my machine?</summary>
+              <p>
+                Not because of Wardian. It has no server and collects nothing.
+                The provider CLIs you run do send code to their own vendors,
+                under your own accounts, exactly as they do without Wardian.
+              </p>
+            </details>
+
+            <details name="faq">
+              <summary>Which agent CLIs work?</summary>
+              <p>
+                Antigravity, Claude Code, Codex, OpenCode, Pi and Gemini CLI,
+                each keeping its own native behaviour. Wardian adapts session
+                identity, working roots, skill discovery and status tracking
+                into one model rather than replacing the tools.
+              </p>
+            </details>
+
+            <details name="faq">
+              <summary>Windows, macOS or Linux?</summary>
+              <p>
+                All three. Installers for Windows x64, Apple Silicon and Intel
+                Macs, and Debian and AppImage builds for Linux x64.
+              </p>
+            </details>
+
+            <details name="faq">
+              <summary>How is this different from running agents in worktrees myself?</summary>
+              <p>
+                You can, and Wardian uses worktrees too. What it adds is
+                everything around them: agents that can address each other,
+                a durable record of what was asked and answered, memory that
+                keeps the evidence it came from, and workflows that branch,
+                loop and wait without a person driving each step.
+              </p>
+            </details>
+
+            <details name="faq">
+              <summary>What happens to my data if I stop using it?</summary>
+              <p>
+                Nothing is locked in. Prompts, classes, skills, workflows and
+                results are files in your own directories, readable and
+                diffable without Wardian running at all.
+              </p>
+            </details>
+
+            <details name="faq">
+              <summary>Is it really free?</summary>
+              <p>
+                Yes. MIT licensed, no paid tier and no account. You still pay
+                your own model providers for whatever the agents use.
+              </p>
+            </details>
+
+            <details name="faq">
+              <summary>How finished is it?</summary>
+              <p>
+                Early. It is under active development, and CLIs, on-disk
+                formats and layouts can change between releases. Pin a version
+                if you depend on it, and please file an issue when something
+                breaks.
+              </p>
+            </details>
           </div>
         </div>
       </section>
@@ -533,8 +654,10 @@
           </div>
 
           <p class="privacy-note">
-            Wardian is MIT licensed and the source is public, so none of this
-            has to be taken on trust. <a href="https://github.com/wardian-app/Wardian">Read the code</a>.
+            Open source is not the same as private &mdash; plenty of open
+            tools still ship analytics. Wardian is MIT licensed <em>and</em>
+            collects nothing, and the source is public so neither half has to
+            be taken on trust. <a href="https://github.com/wardian-app/Wardian">Read the code</a>.
           </p>
         </div>
       </section>
@@ -547,31 +670,31 @@
             asset that matches your operating system and CPU.
           </p>
           <div class="download-grid">
-            <article>
-              <h3><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5.4 10.2 4.4V11.3H3zM11.4 4.2 21 3v8.3H11.4zM3 12.7h7.2v6.9L3 18.6zM11.4 12.7H21V21l-9.6-1.3z"/></svg>Windows</h3>
-              <p>Standard x64 installer.</p>
-              <a href="/download/windows/">Download for Windows</a>
-            </article>
-            <article>
-              <h3><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="4" width="19" height="12.5" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M1 19h22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>macOS Apple Silicon</h3>
-              <p>For M-series Macs.</p>
-              <a href="/download/macos-apple-silicon/">Download for Apple Silicon</a>
-            </article>
-            <article>
-              <h3><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="4" width="19" height="12.5" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M1 19h22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>macOS Intel</h3>
-              <p>For older Intel Macs.</p>
-              <a href="/download/macos-intel/">Download for Intel Mac</a>
-            </article>
-            <article>
-              <h3><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="3.5" width="19" height="17" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6.8 9.2 9.6 12l-2.8 2.8M12.4 15.2h4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Linux Debian/Ubuntu</h3>
-              <p>Installable x64 Debian package.</p>
-              <a href="/download/linux-deb/">Download .deb</a>
-            </article>
-            <article>
-              <h3><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="3.5" width="19" height="17" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6.8 9.2 9.6 12l-2.8 2.8M12.4 15.2h4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Linux AppImage</h3>
-              <p>Portable x64 Linux app.</p>
-              <a href="/download/linux-appimage/">Download AppImage</a>
-            </article>
+            <a class="download-card" href="/download/windows/">
+              <span class="download-head"><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5.4 10.2 4.4V11.3H3zM11.4 4.2 21 3v8.3H11.4zM3 12.7h7.2v6.9L3 18.6zM11.4 12.7H21V21l-9.6-1.3z"/></svg><span class="download-name">Windows</span></span>
+              <span class="download-desc">Standard x64 installer.</span>
+              <span class="download-cta">Download<span class="download-arrow" aria-hidden="true">&nbsp;&rarr;</span></span>
+            </a>
+            <a class="download-card" href="/download/macos-apple-silicon/">
+              <span class="download-head"><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="4" width="19" height="12.5" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M1 19h22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span class="download-name">macOS Apple Silicon</span></span>
+              <span class="download-desc">For M-series Macs.</span>
+              <span class="download-cta">Download<span class="download-arrow" aria-hidden="true">&nbsp;&rarr;</span></span>
+            </a>
+            <a class="download-card" href="/download/macos-intel/">
+              <span class="download-head"><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="4" width="19" height="12.5" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M1 19h22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span class="download-name">macOS Intel</span></span>
+              <span class="download-desc">For older Intel Macs.</span>
+              <span class="download-cta">Download<span class="download-arrow" aria-hidden="true">&nbsp;&rarr;</span></span>
+            </a>
+            <a class="download-card" href="/download/linux-deb/">
+              <span class="download-head"><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="3.5" width="19" height="17" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6.8 9.2 9.6 12l-2.8 2.8M12.4 15.2h4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="download-name">Linux Debian/Ubuntu</span></span>
+              <span class="download-desc">Installable x64 Debian package.</span>
+              <span class="download-cta">Download<span class="download-arrow" aria-hidden="true">&nbsp;&rarr;</span></span>
+            </a>
+            <a class="download-card" href="/download/linux-appimage/">
+              <span class="download-head"><svg class="dl-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="3.5" width="19" height="17" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6.8 9.2 9.6 12l-2.8 2.8M12.4 15.2h4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="download-name">Linux AppImage</span></span>
+              <span class="download-desc">Portable x64 Linux app.</span>
+              <span class="download-cta">Download<span class="download-arrow" aria-hidden="true">&nbsp;&rarr;</span></span>
+            </a>
           </div>
           <p class="download-note">
             macOS builds are Developer ID signed and notarized by Apple. Open
