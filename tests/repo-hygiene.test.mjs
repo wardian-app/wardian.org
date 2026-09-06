@@ -46,6 +46,16 @@ describe("repository hygiene", () => {
   // "https://" and similar scheme text from matching.
   const driveLetter = /(?<![A-Za-z0-9])[A-Za-z]:[\\/]/;
   const userName = basename(homedir());
+  // Shared build accounts are ordinary English words, and prose legitimately
+  // contains them: this file's own CI account is "runner", which collides with
+  // "node's test runner" in a comment. Scanning for those finds nothing real
+  // and fails every hosted run, so the check applies only to a name that could
+  // actually identify a person.
+  const genericAccounts = new Set([
+    "runner", "root", "ubuntu", "user", "admin", "build", "builder",
+    "docker", "vsts", "circleci", "jenkins", "actions", "azureuser", "vagrant",
+  ]);
+  const userNameIsIdentifying = userName.length >= 3 && !genericAccounts.has(userName.toLowerCase());
 
   it("scans a meaningful number of text files", () => {
     assert.ok(textFiles.length >= 8, `only found ${textFiles.length} text files`);
@@ -63,7 +73,7 @@ describe("repository hygiene", () => {
         assert.ok(!content.includes(segment), `${file} contains a home-directory path (${segment})`);
       }
 
-      if (userName.length >= 3) {
+      if (userNameIsIdentifying) {
         assert.ok(
           !content.toLowerCase().includes(userName.toLowerCase()),
           `${file} contains the current username`,
