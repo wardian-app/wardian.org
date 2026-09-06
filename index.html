@@ -43,6 +43,7 @@
       </a>
       <nav class="top-nav" aria-label="Primary navigation">
         <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
         <a href="#faq">FAQ</a>
         <a href="#downloads">Downloads</a>
         <a href="https://github.com/wardian-app/Wardian">GitHub</a>
@@ -76,6 +77,8 @@
             <a href="https://github.com/wardian-app/Wardian/releases/latest">Latest release</a>
             <span aria-hidden="true">/</span>
             <a href="https://github.com/wardian-app/Wardian/issues">Issues and support</a>
+            <span aria-hidden="true">/</span>
+            <a href="https://discord.gg/dVF9PgqwnT">Discord</a>
           </div>
         </div>
 
@@ -107,6 +110,52 @@
             status colour on each card.
           </figcaption>
         </figure>
+      </section>
+
+      <section class="content-band privacy-band" id="privacy" aria-labelledby="privacy-title">
+        <div class="section-inner">
+          <h2 id="privacy-title">Wardian collects nothing</h2>
+          <p class="section-lede">
+            There is no Wardian server. Nothing about your work is sent
+            anywhere, because there is nowhere for it to go.
+          </p>
+
+          <div class="privacy-grid">
+            <article>
+              <h3>Your work stays on your machine</h3>
+              <p>
+                Agents run as local processes in your own project folders.
+                Prompts, skills, classes, workflows and results are files on
+                your disk. The Dashboard reads a local database. Nothing is
+                uploaded.
+              </p>
+            </article>
+            <article>
+              <h3>No account, no identifiers</h3>
+              <p>
+                There is no sign-up, no licence check and no device id. This
+                site sets no cookies and loads no analytics.
+              </p>
+            </article>
+            <article>
+              <h3>What does touch the network</h3>
+              <p>
+                Released builds ask GitHub whether a newer version exists.
+                Otherwise it is only whatever your provider CLI connects to, on
+                your own account, the same as it would without Wardian. Wardian
+                never proxies that request, so if the CLI is pointed at a local
+                model, nothing leaves the machine at all.
+              </p>
+            </article>
+          </div>
+
+          <p class="privacy-note">
+            Open source is not the same as private. Plenty of open tools ship
+            analytics. Wardian is MIT licensed and collects nothing, and the
+            source is there to check.
+            <a href="https://github.com/wardian-app/Wardian">Read the code</a>.
+          </p>
+        </div>
       </section>
 
       <div id="features" class="features" role="region" aria-label="What Wardian does">
@@ -154,46 +203,48 @@
           </div>
         </section>
 
-        <section class="feature" id="feature-ask-reply" data-clip="ask-reply" aria-labelledby="feature-ask-reply-title">
+        <section class="feature" id="feature-inbox" data-clip="inbox" aria-labelledby="feature-inbox-title">
           <div class="feature-inner">
             <div class="feature-copy">
-              <p class="feature-eyebrow"><span class="feature-index">02</span> Ask and reply</p>
-              <h2 id="feature-ask-reply-title">Handoffs that leave a record</h2>
+              <p class="feature-eyebrow"><span class="feature-index">02</span> Inbox</p>
+              <h2 id="feature-inbox-title">One place for whatever needs you</h2>
               <p>
-                An ask carries a durable id. The reply comes back against that
-                id with a status and any choices the ask offered, and both ends
-                land in the Inbox.
+                Finished work, automation outcomes, important updates, and the
+                prompts an agent is blocked on all arrive in one list. Unread
+                first, filterable by type, with a badge when something is
+                waiting on a decision.
               </p>
               <p>
-                A message can queue while the receiving agent is busy or
-                offline, and it keeps its delivery receipt either way.
+                An approval request names the action, why it is risky, and the
+                choices you can send back. It expires rather than proceeding on
+                its own, and only one can be open per agent at a time.
               </p>
               <a class="feature-link" href="https://docs.wardian.org/guide/inbox">Inbox guide</a>
             </div>
             <figure class="feature-media">
               <video
                 class="clip"
-                poster="assets/media/ask-reply.png"
+                poster="assets/media/inbox.png"
                 width="1280"
                 height="800"
                 muted
                 loop
                 playsinline
                 preload="none"
-                aria-label="Silent looping recording of a structured ask reaching another Wardian agent and its reply appearing in the Inbox."
+                aria-label="Silent looping recording of the Wardian Inbox showing an approval request with its choices and a completed agent result."
               >
-                <source data-src="assets/media/ask-reply.webm" type="video/webm">
-                <source data-src="assets/media/ask-reply.mp4" type="video/mp4">
+                <source data-src="assets/media/inbox.webm" type="video/webm">
+                <source data-src="assets/media/inbox.mp4" type="video/mp4">
               </video>
               <noscript>
                 <img
-                  src="assets/media/ask-reply.png"
-                  alt="A structured ask reaching another Wardian agent and its reply appearing in the Inbox."
+                  src="assets/media/inbox.png"
+                  alt="The Wardian Inbox showing an approval request with its choices and a completed agent result."
                   width="1280"
                   height="800"
                 >
               </noscript>
-              <figcaption>A structured ask reaching another agent, and its reply in the Inbox.</figcaption>
+              <figcaption>The Inbox: an approval request with its choices, and a completed result.</figcaption>
             </figure>
           </div>
         </section>
@@ -551,114 +602,75 @@
               <summary>Does my code leave my machine?</summary>
               <p>
                 Not because of Wardian. It has no server and collects nothing.
-                The provider CLIs you run do send code to their own vendors,
-                under your own accounts, exactly as they do without Wardian.
-              </p>
-            </details>
-
-            <details name="faq">
-              <summary>Which agent CLIs work?</summary>
-              <p>
-                Antigravity, Claude Code, Codex, OpenCode, Pi and Gemini CLI,
-                each keeping its own native behaviour. Wardian adapts session
-                identity, working roots, skill discovery and status tracking
-                into one model rather than replacing the tools.
-              </p>
-            </details>
-
-            <details name="faq">
-              <summary>Windows, macOS or Linux?</summary>
-              <p>
-                All three. Installers for Windows x64, Apple Silicon and Intel
-                Macs, and Debian and AppImage builds for Linux x64.
+                Your provider CLI connects to whichever model you have
+                configured, on your own account, and Wardian never proxies that
+                request. Point the CLI at a local model and nothing leaves the
+                machine at all.
               </p>
             </details>
 
             <details name="faq">
               <summary>How is this different from running agents in worktrees myself?</summary>
               <p>
-                You can, and Wardian uses worktrees too. What it adds is
-                everything around them: agents that can address each other,
-                a durable record of what was asked and answered, memory that
-                keeps the evidence it came from, and workflows that branch,
-                loop and wait without a person driving each step.
+                You can, and Wardian will create a worktree for an agent when
+                you ask it to. What it adds is everything around them: agents
+                that can address each other, a durable record of what was asked
+                and answered, memory that keeps the evidence it came from, and
+                workflows that branch, loop and wait without you driving each
+                step.
               </p>
             </details>
 
             <details name="faq">
-              <summary>What happens to my data if I stop using it?</summary>
+              <summary>Do I need a Wardian account or a second subscription?</summary>
               <p>
-                Nothing is locked in. Prompts, classes, skills, workflows and
-                results are files in your own directories, readable and
-                diffable without Wardian running at all.
+                Neither. Wardian runs the CLIs already installed on your
+                machine, signed in to your own accounts, and never holds a key
+                or bills for a request. You pay your model providers exactly
+                what you would without it.
               </p>
             </details>
 
             <details name="faq">
-              <summary>Is it really free?</summary>
+              <summary>What happens to a running agent if I close its tab?</summary>
               <p>
-                Yes. MIT licensed, no paid tier and no account. You still pay
-                your own model providers for whatever the agents use.
+                It keeps running. Closing a tab is a view change, not a
+                lifecycle change; stopping an agent takes an explicit Pause,
+                Restart Session or Delete, so nothing dies because a window
+                closed.
+              </p>
+            </details>
+
+            <details name="faq">
+              <summary>Does it respect the AGENTS.md and skills I already have?</summary>
+              <p>
+                Yes. Every supported provider discovers <code>AGENTS.md</code>
+                natively, and Wardian adds its own instruction files and skill
+                roots through each CLI's own mechanism rather than replacing
+                what you have set up.
+              </p>
+            </details>
+
+            <details name="faq">
+              <summary>Do I have to use the desktop app?</summary>
+              <p>
+                No. <code>wardian</code> drives the same backend from a
+                terminal, and it is the same surface agents use: spawn a peer,
+                send a task, wait for a reply, read state, start and stop
+                automations.
               </p>
             </details>
 
             <details name="faq">
               <summary>How finished is it?</summary>
               <p>
-                Early. It is under active development, and CLIs, on-disk
-                formats and layouts can change between releases. Pin a version
-                if you depend on it, and please file an issue when something
+                Early, and under active development. CLIs, on-disk formats and
+                layouts can still change between releases, so pin a version if
+                you depend on it and please file an issue when something
                 breaks.
               </p>
             </details>
           </div>
-        </div>
-      </section>
-
-      <section class="content-band privacy-band" id="privacy" aria-labelledby="privacy-title">
-        <div class="section-inner">
-          <h2 id="privacy-title">Wardian collects nothing</h2>
-          <p class="section-lede">
-            No analytics, no telemetry, no accounts, no phoning home. There is
-            no Wardian server to send anything to.
-          </p>
-
-          <div class="privacy-grid">
-            <article>
-              <h3>Your work stays on your machine</h3>
-              <p>
-                Agents run as local processes in your real project folders.
-                Sessions, prompts, skills, classes, workflows and results are
-                files on your disk, and the telemetry behind the Dashboard is a
-                local database. None of it is transmitted.
-              </p>
-            </article>
-            <article>
-              <h3>No identifiers, no account</h3>
-              <p>
-                Wardian has no sign-up, no licence check and no device id. It
-                does not know who you are, and this website sets no cookies and
-                loads no analytics.
-              </p>
-            </article>
-            <article>
-              <h3>What does reach the network</h3>
-              <p>
-                Two things, both yours. Released builds ask GitHub whether a
-                newer version exists. And the provider CLIs you run &mdash;
-                Claude Code, Codex, Gemini, Antigravity, OpenCode, Pi &mdash;
-                talk to their own vendors under your own accounts, exactly as
-                they do outside Wardian.
-              </p>
-            </article>
-          </div>
-
-          <p class="privacy-note">
-            Open source is not the same as private &mdash; plenty of open
-            tools still ship analytics. Wardian is MIT licensed <em>and</em>
-            collects nothing, and the source is public so neither half has to
-            be taken on trust. <a href="https://github.com/wardian-app/Wardian">Read the code</a>.
-          </p>
         </div>
       </section>
 
