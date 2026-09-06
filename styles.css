@@ -966,3 +966,146 @@ h1 {
     scroll-behavior: auto !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Clip sections stack, so the clip gets the full column.
+
+   These are recordings of a desktop interface. In the two-column layout a
+   1280px capture was displayed at roughly 630px, which halves 12px interface
+   labels into something nobody can read. Giving the clip the whole width puts
+   it back near 1:1 at desktop sizes, which is the only thing that actually
+   fixes legibility -- a sharper encode of a picture scaled to 0.4x is still
+   unreadable.
+   -------------------------------------------------------------------------- */
+.feature[data-clip] .feature-inner {
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 30px);
+  max-width: 1280px;
+}
+
+/* Alternating sides only makes sense side by side; stacked, the copy leads. */
+.feature[data-clip]:nth-of-type(even) .feature-copy {
+  order: 0;
+}
+
+.feature[data-clip] .feature-copy {
+  max-width: 68ch;
+}
+
+.feature[data-clip] .feature-copy p {
+  max-width: 68ch;
+}
+
+/* --------------------------------------------------------------------------
+   Stored memory record
+   -------------------------------------------------------------------------- */
+.record {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.record-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+  font-size: 0.82rem;
+}
+
+.record-id {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.record-scope,
+.record-rev {
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.record-text {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.record-evidence {
+  display: grid;
+  gap: 6px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  background: var(--surface-2);
+}
+
+.record-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.record-evidence blockquote {
+  margin: 0;
+  font-style: italic;
+  color: var(--text);
+}
+
+.record-history {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.record-history li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: baseline;
+  color: var(--muted);
+}
+
+.record-rev-tag {
+  flex: none;
+  font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.record-history .is-current .record-note,
+.record-history .is-current .record-rev-tag {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Download platform marks
+   -------------------------------------------------------------------------- */
+.download-grid h3 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dl-icon {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  fill: currentColor;
+}

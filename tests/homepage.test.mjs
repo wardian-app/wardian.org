@@ -11,7 +11,6 @@ const REQUIRED_CLIPS = [
   { id: "graph", heading: "Agents that know about each other" },
   { id: "ask-reply", heading: "Handoffs that leave a record" },
   { id: "workflows", heading: "Workflows that branch, loop, and wait" },
-  { id: "thought-telemetry", heading: "See what each agent is thinking" },
   { id: "dashboard", heading: "The fleet, not the tab" },
   { id: "markdown-truth", heading: "Everything is a file you can read" },
   { id: "classes", heading: "Roles you define once" },
@@ -125,32 +124,42 @@ describe("clip markup", () => {
 });
 
 describe("widgets", () => {
-  it("names all five agent status states", () => {
-    for (const status of ["idle", "processing", "action", "off", "error"]) {
-      assert.match(html, new RegExp(`data-status="${status}"`), `missing status ${status}`);
-    }
-  });
-
-  it("ships the memory terminal transcript as real markup", () => {
+  it("ships the agent CLI transcript as real markup", () => {
     assert.match(html, /data-terminal\b/);
+    // The pitch of the section is that an agent drives Wardian the same way a
+    // person does, so the transcript has to show coordination, not just one
+    // command.
+    assert.match(html, /wardian agent list/);
+    assert.match(html, /wardian ask /);
     assert.match(html, /wardian memory save/);
-    assert.match(html, /wardian memory recall/);
     assert.match(html, /--evidence/);
     // The transcript is in the HTML, so it reads correctly without scripting.
-    assert.ok(html.split("wardian memory").length - 1 >= 4);
+    assert.ok(html.split("$ wardian").length - 1 >= 4);
   });
 
-  it("ships the delivery state diagram inline, with a described state per node", () => {
-    assert.match(html, /data-node-diagram/);
-    const nodes = [...html.matchAll(/data-node-copy="([^"]+)"/g)];
+  it("shows a stored memory with its evidence and superseded revision", () => {
+    assert.match(html, /class="record"/);
+    assert.match(html, /class="record-evidence"/);
+    // Provenance is the claim: the excerpt it came from, and the fact that an
+    // update keeps the older revision instead of overwriting it.
+    assert.match(html, /Evidence/);
+    assert.match(html, /superseded/);
+    assert.match(html, /rev 1/);
+    assert.match(html, /rev 2/);
+  });
 
-    assert.ok(nodes.length >= 5, "expected at least five delivery states");
-    for (const [, copy] of nodes) {
-      assert.ok(copy.trim().length > 20, "node description is too short");
-    }
-    for (const state of ["queued", "accepted", "started", "completed", "uncertain"]) {
-      assert.match(html, new RegExp(`class="node node-${state}"`), `missing state ${state}`);
-    }
+  it("gives every download a platform mark", () => {
+    const icons = [...html.matchAll(/class="dl-icon"/g)];
+    const headings = [...html.matchAll(/<h3><svg class="dl-icon"/g)];
+    assert.equal(icons.length, 5, "expected one mark per download");
+    assert.equal(headings.length, 5, "every download heading leads with its mark");
+  });
+
+  it("does not claim macOS builds are unsigned", () => {
+    // Releases are Developer ID signed and notarized; the old copy said the
+    // opposite and would have sent Mac users hunting for a Gatekeeper override.
+    assert.doesNotMatch(html, /unsigned/i);
+    assert.match(html, /Developer ID signed and notarized/);
   });
 });
 
