@@ -1,0 +1,34 @@
+name: CI
+
+# GitHub Pages publishes this repository from `main` at the root, so a merge is
+# a deploy. Without a gate the only thing standing between a broken edit and
+# the live site is whoever clicked merge. These are the same checks the test
+# suite runs locally.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      # No package.json and no dependencies: the suite is node's own test
+      # runner over plain .mjs files, which is why this site needs no build
+      # step and can be served straight from the repository root.
+      - name: Run tests
+        run: node --test tests/*.test.mjs
