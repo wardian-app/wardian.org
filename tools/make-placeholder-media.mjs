@@ -5,7 +5,7 @@
  *
  * The real files are produced by the capture pipeline in the Wardian app repo
  * and copied in at integration time. These stand-ins deliberately look like
- * placeholders: a labelled colour card naming the clip id, never a mock-up of a
+ * placeholders: a labeled color card naming the clip id, never a mock-up of a
  * UI that does not exist.
  *
  * Usage: node tools/make-placeholder-media.mjs [clip-id ...]

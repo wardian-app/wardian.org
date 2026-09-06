@@ -12,7 +12,7 @@ real absolute path, drive letter, or user home directory.
 - `index.html` - product homepage: hero, feature sections, widgets, downloads,
   and outbound project links.
 - `styles.css` - responsive page styling, light and dark.
-- `assets/site.mjs` - homepage behaviour: lazy clip loading, the memory
+- `assets/site.mjs` - homepage behavior: lazy clip loading, the memory
   terminal, and the delivery state diagram. Progressive enhancement only.
 - `assets/media/` - the feature clips and their posters. See
   [Feature media](#feature-media).
@@ -96,8 +96,8 @@ repository names, or real agent sessions.
 
 ### Placeholders
 
-Until the capture lands, `assets/media/` holds generated placeholders: labelled
-colour cards naming the clip id, never a mock-up of a UI that does not exist.
+Until the capture lands, `assets/media/` holds generated placeholders: labeled
+color cards naming the clip id, never a mock-up of a UI that does not exist.
 Regenerate them with ffmpeg on `PATH`:
 
 ```bash

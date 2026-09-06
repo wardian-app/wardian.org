@@ -2,7 +2,7 @@
  * Wardian homepage styles.
  *
  * The full light palette is defined on :root. The dark block below overrides
- * only the tokens that change, so every colour has exactly one source.
+ * only the tokens that change, so every color has exactly one source.
  */
 
 :root {
@@ -21,14 +21,14 @@
   --accent-strong: #1f594c;
   --signal: #8a5d05;
 
-  /* Agent status colours, from the app's semantic theme tokens. */
+  /* Agent status colors, from the app's semantic theme tokens. */
   --status-idle: #059669;
   --status-processing: #0891b2;
   --status-action: #d97706;
   --status-off: #4b5563;
   --status-error: #dc2626;
 
-  /* Delivery-state diagram accent that is not already a status colour. */
+  /* Delivery-state diagram accent that is not already a status color. */
   --node-accepted: #2563eb;
 
   --term-bg: #141c1b;

@@ -92,7 +92,7 @@
             loop
             playsinline
             preload="none"
-            aria-label="Silent looping recording of the Wardian agent Grid with several live terminals and their status colours."
+            aria-label="Silent looping recording of the Wardian agent Grid with several live terminals and their status colors."
           >
             <source data-src="assets/media/hero.webm" type="video/webm">
             <source data-src="assets/media/hero.mp4" type="video/mp4">
@@ -100,14 +100,14 @@
           <noscript>
             <img
               src="assets/media/hero.png"
-              alt="The Wardian agent Grid with several live agent terminals and their status colours."
+              alt="The Wardian agent Grid with several live agent terminals and their status colors."
               width="1280"
               height="800"
             >
           </noscript>
           <figcaption>
             The Grid: every agent running in its own PTY-backed terminal, with
-            status colour on each card.
+            status color on each card.
           </figcaption>
         </figure>
       </section>
@@ -133,7 +133,7 @@
             <article>
               <h3>No account, no identifiers</h3>
               <p>
-                There is no sign-up, no licence check and no device id. This
+                There is no sign-up, no license check and no device id. This
                 site sets no cookies and loads no analytics.
               </p>
             </article>
@@ -171,7 +171,7 @@
               </p>
               <p>
                 The topology is written to <code>topology.json</code>, so an
-                agent can read its own neighbours before it sends anything.
+                agent can read its own neighbors before it sends anything.
               </p>
               <a class="feature-link" href="https://docs.wardian.org/guide/graph">Graph guide</a>
             </div>
@@ -185,7 +185,7 @@
                 loop
                 playsinline
                 preload="none"
-                aria-label="Silent looping recording of the Wardian Graph view showing agent topology, edges, and neighbours."
+                aria-label="Silent looping recording of the Wardian Graph view showing agent topology, edges, and neighbors."
               >
                 <source data-src="assets/media/graph.webm" type="video/webm">
                 <source data-src="assets/media/graph.mp4" type="video/mp4">
@@ -193,12 +193,12 @@
               <noscript>
                 <img
                   src="assets/media/graph.png"
-                  alt="The Wardian Graph view showing agent topology, edges, and neighbours."
+                  alt="The Wardian Graph view showing agent topology, edges, and neighbors."
                   width="1280"
                   height="800"
                 >
               </noscript>
-              <figcaption>Graph view: topology, edges, neighbours, and team-seeded links.</figcaption>
+              <figcaption>Graph view: topology, edges, neighbors, and team-seeded links.</figcaption>
             </figure>
           </div>
         </section>
@@ -383,13 +383,17 @@
               <p class="feature-eyebrow"><span class="feature-index">06</span> Files on disk</p>
               <h2 id="feature-markdown-truth-title">Everything is a file you can read</h2>
               <p>
-                Prompts, classes, skills, workflows, results, and topology are
-                files. The Library and the Explorer show the same directory you
-                can open in any editor.
+                Prompts, classes, skills, and workflows are plain files in your
+                Wardian home. So is the agent graph, in
+                <code>topology.json</code>, and the queue behind the Inbox, in
+                <code>queue/items.json</code>. The Library edits them and the
+                Explorer browses the same directory.
               </p>
               <p>
-                The app is a view onto that directory, so the state stays
-                readable when the app is closed.
+                The app is a view onto those files rather than a store that
+                owns them. Edit <code>topology.json</code> in any editor and the
+                Graph redraws while you watch. Close Wardian and the state is
+                still there to read.
               </p>
               <a class="feature-link" href="https://docs.wardian.org/guide/explorer">Explorer guide</a>
             </div>
@@ -403,7 +407,7 @@
                 loop
                 playsinline
                 preload="none"
-                aria-label="Silent looping recording of the Wardian Library and Explorer showing the same files on disk."
+                aria-label="Silent looping recording of a prompt opened in the Wardian Library, then the same file reached through the Explorer file tree."
               >
                 <source data-src="assets/media/markdown-truth.webm" type="video/webm">
                 <source data-src="assets/media/markdown-truth.mp4" type="video/mp4">
@@ -411,12 +415,12 @@
               <noscript>
                 <img
                   src="assets/media/markdown-truth.png"
-                  alt="The Wardian Library and Explorer showing the same files on disk."
+                  alt="A prompt open in the Wardian Library beside the Explorer file tree holding the same file."
                   width="1280"
                   height="800"
                 >
               </noscript>
-              <figcaption>The Library and the Explorer showing the same on-disk files.</figcaption>
+              <figcaption>A prompt in the Library, then the same file in the Explorer.</figcaption>
             </figure>
           </div>
         </section>
@@ -777,14 +781,14 @@
               <li><a href="https://github.com/wardian-app/Wardian">GitHub</a></li>
               <li><a href="https://discord.gg/dVF9PgqwnT">Discord</a></li>
               <li><a href="https://github.com/wardian-app/Wardian/issues">Issues and support</a></li>
-              <li><a href="https://github.com/wardian-app/Wardian/blob/main/LICENSE">MIT licence</a></li>
+              <li><a href="https://github.com/wardian-app/Wardian/blob/main/LICENSE">MIT license</a></li>
             </ul>
           </div>
         </nav>
       </div>
 
       <p class="footer-legal">
-        Free and open source under the MIT licence. No analytics on this site.
+        Free and open source under the MIT license. No analytics on this site.
       </p>
     </footer>
   </body>
