@@ -9,7 +9,7 @@ import { describe, it } from "node:test";
  */
 const REQUIRED_CLIPS = [
   { id: "graph", heading: "Agents that know about each other" },
-  { id: "ask-reply", heading: "Handoffs that leave a record" },
+  { id: "inbox", heading: "One place for whatever needs you" },
   { id: "workflows", heading: "Workflows that branch, loop, and wait" },
   { id: "dashboard", heading: "The fleet, not the tab" },
   { id: "markdown-truth", heading: "Everything is a file you can read" },
