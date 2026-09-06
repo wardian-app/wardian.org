@@ -18,8 +18,9 @@ real absolute path, drive letter, or user home directory.
   [Feature media](#feature-media).
 - `assets/wardian-logo.svg` - real Wardian logo, copied from
   `<wardian-repo>/public/icon.svg`.
-- `assets/wardian-screenshot.png` - real app screenshot used for social cards,
-  copied from `<wardian-repo>/docs/assets/screenshots/grid/app-shell.png`.
+- `assets/wardian-screenshot.png` - the Open Graph and Twitter card image. It
+  is the hero clip's poster frame, so refreshing the clips refreshes the card:
+  copy `<wardian-repo>/docs/assets/site-media/hero.png` over it.
 - `assets/wardian-demo.gif` - the previous hero animation, copied from
   `<wardian-repo>/public/demo.gif`. The homepage now uses the `hero` clip
   instead; the file is kept because external pages link to it.

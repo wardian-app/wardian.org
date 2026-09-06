@@ -771,6 +771,22 @@ h1 {
   font-weight: 800;
 }
 
+/* Gemini CLI is supported but unmaintained. The grid would otherwise read as
+   six equals, which is the one thing a reader would act on and be wrong. */
+.provider-note {
+  margin-left: 0.45rem;
+  padding: 0.08rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
 .provider-grid p,
 .download-grid p {
   margin-bottom: 0;

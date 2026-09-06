@@ -3,4 +3,19 @@
   <url>
     <loc>https://wardian.org/</loc>
   </url>
+  <url>
+    <loc>https://wardian.org/download/windows/</loc>
+  </url>
+  <url>
+    <loc>https://wardian.org/download/macos-apple-silicon/</loc>
+  </url>
+  <url>
+    <loc>https://wardian.org/download/macos-intel/</loc>
+  </url>
+  <url>
+    <loc>https://wardian.org/download/linux-deb/</loc>
+  </url>
+  <url>
+    <loc>https://wardian.org/download/linux-appimage/</loc>
+  </url>
 </urlset>
