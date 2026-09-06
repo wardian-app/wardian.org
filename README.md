@@ -12,14 +12,15 @@ real absolute path, drive letter, or user home directory.
 - `index.html` - product homepage: hero, feature sections, widgets, downloads,
   and outbound project links.
 - `styles.css` - responsive page styling, light and dark.
-- `assets/site.mjs` - homepage behaviour: lazy clip loading, the memory
+- `assets/site.mjs` - homepage behavior: lazy clip loading, the memory
   terminal, and the delivery state diagram. Progressive enhancement only.
 - `assets/media/` - the feature clips and their posters. See
   [Feature media](#feature-media).
 - `assets/wardian-logo.svg` - real Wardian logo, copied from
   `<wardian-repo>/public/icon.svg`.
-- `assets/wardian-screenshot.png` - real app screenshot used for social cards,
-  copied from `<wardian-repo>/docs/assets/screenshots/grid/app-shell.png`.
+- `assets/wardian-screenshot.png` - the Open Graph and Twitter card image. It
+  is the hero clip's poster frame, so refreshing the clips refreshes the card:
+  copy `<wardian-repo>/docs/assets/site-media/hero.png` over it.
 - `assets/wardian-demo.gif` - the previous hero animation, copied from
   `<wardian-repo>/public/demo.gif`. The homepage now uses the `hero` clip
   instead; the file is kept because external pages link to it.
@@ -96,8 +97,8 @@ repository names, or real agent sessions.
 
 ### Placeholders
 
-Until the capture lands, `assets/media/` holds generated placeholders: labelled
-colour cards naming the clip id, never a mock-up of a UI that does not exist.
+Until the capture lands, `assets/media/` holds generated placeholders: labeled
+color cards naming the clip id, never a mock-up of a UI that does not exist.
 Regenerate them with ffmpeg on `PATH`:
 
 ```bash

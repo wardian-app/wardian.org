@@ -1,5 +1,5 @@
 /**
- * Homepage behaviour: lazy feature clips, the CLI terminal, and the automation
+ * Homepage behavior: lazy feature clips, the CLI terminal, and the automation
  * node diagram.
  *
  * Everything here is an enhancement. With scripting disabled the page still
