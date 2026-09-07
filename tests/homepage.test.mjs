@@ -12,6 +12,7 @@ const REQUIRED_CLIPS = [
   { id: "inbox", heading: "One place for whatever needs you" },
   { id: "workflows", heading: "Workflows that branch, loop, and wait" },
   { id: "dashboard", heading: "The fleet, not the tab" },
+  { id: "garden", heading: "A map where position means something" },
   { id: "markdown-truth", heading: "Everything is a file you can read" },
   { id: "classes", heading: "Roles you define once" },
 ];
