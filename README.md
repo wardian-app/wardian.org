@@ -88,9 +88,13 @@ repository, which writes them and a `manifest.json` to
 `assets/media/` with the same filenames, flat. Regenerating on a release
 replaces the clips without touching the page markup.
 
-Encoding, set by the capture: H.264 mp4 with `-pix_fmt yuv420p` and
-`+faststart`, VP9 webm, PNG poster from the first frame, no audio track, 6-12
-seconds, and every mp4 under 900 KB.
+Encoding: H.264 mp4 with `-pix_fmt yuv420p` and `+faststart`, VP9 webm,
+and a PNG poster, with no audio track. Most clips are 6-12 seconds and under
+900 KB. The Garden tour is longer so it can show the complete zoom into an
+agent's five regions and a readable record, then return to the habitat.
+Its poster shows the agent regions. The Garden entry in `manifest.json`
+records its own capture date, source commit, dimensions, duration, and sizes;
+other clips retain their original capture metadata.
 
 Clips must contain no real user paths, usernames, drive letters, private
 repository names, or real agent sessions.

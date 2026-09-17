@@ -170,8 +170,17 @@ describe("widgets", () => {
   });
 
   it("answers the questions a download page cannot", () => {
-    const entries = [...html.matchAll(/<details name="faq">/g)];
-    assert.ok(entries.length >= 6, `only ${entries.length} FAQ entries`);
+    const summaries = [...html.matchAll(/<summary>([\s\S]*?)<\/summary>/g)]
+      .map((match) => match[1].replace(/\s+/g, " ").trim());
+    assert.deepEqual(summaries, [
+      "Does my code leave my machine?",
+      "How is this different from running the CLIs in my own terminals?",
+      "Do I need a Wardian account or a second subscription?",
+      "What happens to a running agent if I close its tab?",
+      "How finished is it?",
+    ]);
+    assert.doesNotMatch(html, /Do I have to use the desktop app\?/);
+    assert.doesNotMatch(html, /Does it respect the AGENTS\.md and skills I already have\?/);
     // <details> works with scripting off, which is the point of using it.
     assert.match(html, /<summary>Does my code leave my machine\?<\/summary>/);
   });
