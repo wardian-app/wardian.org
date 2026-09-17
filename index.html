@@ -382,20 +382,16 @@
               <p class="feature-eyebrow"><span class="feature-index">06</span> Garden</p>
               <h2 id="feature-garden-title">A map where position means something</h2>
               <p>
-                The Garden lays out every agent, automation, and deployed skill
-                so that distance carries information. Two units sit close
-                because they share facts Wardian already records: a workspace, a
-                team, a worktree, a deployment. A shared fact counts for more
-                the rarer it is. Sharing a provider with twenty agents says
-                almost nothing; sharing a worktree with one says a great deal.
+                Start with the shape of your work: agents, workspaces, and
+                situated automations grouped into districts by the teams and
+                projects they share. Zoom toward an agent to see its Identity,
+                Skills, Memory, Automations, and Conversations in place.
               </p>
               <p>
-                Districts come from the strongest tie each unit has, and
-                whatever nothing ties anywhere collects in the commons, which is
-                how an unbound automation or a forgotten agent becomes visible.
-                The layout is derived from the roster, the topology, and the
-                schedules every time they change, so nothing sits where it does
-                by accident.
+                Keep zooming to read an individual record and its evidence.
+                Zoom back out to return to the agent and the wider habitat.
+                The contents stay anchored as detail unfolds, so you can follow
+                the path from the overview to the work behind it.
               </p>
               <a class="feature-link" href="https://docs.wardian.org/guide/garden">Garden guide</a>
             </div>
@@ -409,7 +405,7 @@
                 loop
                 playsinline
                 preload="none"
-                aria-label="Silent looping recording of the Wardian Garden, a map arranging agents and automations into districts by what they share."
+                aria-label="Silent looping recording of the Wardian Garden zooming from the habitat overview into an agent's regions and a memory record, then back out."
               >
                 <source data-src="assets/media/garden.webm" type="video/webm">
                 <source data-src="assets/media/garden.mp4" type="video/mp4">
@@ -417,12 +413,12 @@
               <noscript>
                 <img
                   src="assets/media/garden.png"
-                  alt="The Wardian Garden, a map arranging agents and automations into districts by what they share."
+                  alt="A Wardian Garden agent with Identity, Skills, Memory, Automations, and Conversations arranged inside its cell."
                   width="1280"
                   height="800"
                 >
               </noscript>
-              <figcaption>The Garden: agents grouped by what they share, with an unbound automation sitting apart.</figcaption>
+              <figcaption>From the habitat to an agent's regions, into a memory record, and back out through the same map.</figcaption>
             </figure>
           </div>
         </section>
@@ -692,28 +688,6 @@
                 lifecycle change; stopping an agent takes an explicit Pause,
                 Restart Session or Delete, so nothing dies because a window
                 closed.
-              </p>
-            </details>
-
-            <details name="faq">
-              <summary>Does it respect the AGENTS.md and skills I already have?</summary>
-              <p>
-                Yes. Each CLI keeps reading whatever it already reads &mdash;
-                <code>AGENTS.md</code> for Codex, Pi, Antigravity and OpenCode,
-                <code>CLAUDE.md</code> for Claude Code, <code>GEMINI.md</code>
-                for Gemini CLI. Wardian adds its own instruction files and skill
-                roots through that CLI's own mechanism rather than replacing
-                what you have set up.
-              </p>
-            </details>
-
-            <details name="faq">
-              <summary>Do I have to use the desktop app?</summary>
-              <p>
-                No. <code>wardian</code> drives the same backend from a
-                terminal, and it is the same surface agents use: spawn a peer,
-                send a task, wait for a reply, read state, start and stop
-                automations.
               </p>
             </details>
 

@@ -59,8 +59,13 @@
       "poster": "garden.png",
       "width": 1280,
       "height": 800,
-      "duration_ms": 8021,
-      "bytes_mp4": 129192
+      "duration_ms": 48000,
+      "bytes_mp4": 1532453,
+      "bytes_webm": 1183987,
+      "captured_at": "2026-09-17T08:17:23.645Z",
+      "source_app_sha": "4cc77e4c5cc3ab21c594e230bf7f327cfd6a8c1d",
+      "capture_method": "Playwright recording with synthetic Garden fixtures, wheel zoom and keyboard panning; H.264 and VP9 encodes.",
+      "provenance": "Real Wardian Garden UI with deterministic synthetic fixtures. Habitat overview, agent regions, memory record, and return to overview."
     },
     {
       "id": "markdown-truth",
